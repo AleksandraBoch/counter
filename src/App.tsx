@@ -1,14 +1,19 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import './App.css';
-import {Counter} from "./counter/counter";
+import {Counter} from "./counter/counterBody";
+import {CounterSettings} from "./counter/counterSettings/counterSettings";
+
+
+
 
 function App() {
-  return (
-
+    return(
+        <div className={'app'}>
 <Counter />
-  )
+            <CounterSettings/>
 
+        </div>
+    );
 }
 
 export default App;

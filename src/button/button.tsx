@@ -4,7 +4,8 @@ type ButtonType={
     name:string
     callBack:()=>void
     disabled?:boolean,
-    maxNum?:number
+    setMaxNum?:()=>void,
+    setMinNum?:()=>void,
 }
 
 

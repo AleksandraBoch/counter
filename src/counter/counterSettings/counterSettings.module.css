@@ -1,24 +1,21 @@
-*{
-    background-color: #282c34;
 
-}
-
-.task{
-
-    justify-content: center;
-    vertical-align: center;
-    border:2px solid #70e3fe;
-    width: min-content;
-    margin: 250px;
-    font-size: 32px;
-    border-radius: 5px;
-
+.body{
+    display: flex;
+    border: 2px solid #9de9d6;
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 10px;
+    height: 150px;
+    justify-content: space-between;
+    padding: 10px;
+    width: 200px;
+    margin-left: 150px;
 }
 
 .buttons{
     display: flex;
     justify-content: space-evenly;
-    border:2px solid #64e2ed;
+
     margin: 7px;
     color:#70e3fe ;
 }
@@ -43,4 +40,11 @@
     border:2px solid #64e2ed;
     height: 100px;
     margin: 10px 10px 10px 10px;
+}
+.buttonsGroup{
+    border: 2px solid #9de9d6;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
 }
