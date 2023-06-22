@@ -4,46 +4,54 @@ import style from "./counter.module.css"
 
 
 type CounterType={
-    disabled?:boolean;
-    maxValue?:number,
-    minValue?:number,
-    num?:number
+    disabled:boolean;
+    maxValue:number,
+    minValue:number,
+    num:number,
+    setNum:(value:number)=>void,
+    error?:(value:string)=>void
 }
 
 
-
 export const Counter = (props:CounterType) => {
-    let [num, setNum] = useState(0)
-    let [error, setError] = useState('Error!')
+    // let [num, setNum] = useState(0)
+    // let [error, setError] = useState('Error!')
 
-let errorStyle=`${num===5  && style.error}`
+    let error :any =()=>{
+        if (props.maxValue<props.minValue || props.maxValue===props.minValue )
+        {error= 'incorrect value'}
+    else{ error='please set value'}
+}
+let errorStyle=`${props.num===props.maxValue  && style.error}`
 
 
 
     let count = () => {
-        if (num <= 4) {
-            return setNum(++num)
-        } else return setError('Error!')
+       props.setNum(props.num + 1)
+        if(props.num===props.maxValue -1){
+
+        }
     }
 
     const resetButton = () => {
-        return setNum(0)
+        return props.setNum(0)
     }
+
+    let disabledCount=props.num===props.maxValue
+
     return (
 <div className={style.frame}>
 
         <div className={style.display}>
             <div className={style.counterScreen}>
 
-                <h2 className={`${style.num} ${errorStyle}`}>{num}</h2>
+                <h2 className={`${style.num} ${errorStyle}`}>{props.num}</h2>
 
             </div>
-
-
         </div>
         <div className={style.buttonsGroup}>
-            <Button name={'count'} callBack={count} />
-            <Button name={'Reset'} callBack={resetButton} disabled={num==0}/>
+            <Button name={'count'} callBack={count} disabled={disabledCount} />
+            <Button name={'Reset'} callBack={resetButton} disabled={props.num==0}/>
         </div>
 
 

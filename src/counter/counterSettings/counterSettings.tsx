@@ -1,30 +1,39 @@
-import React, {ChangeEvent, useState} from "react";
+import React from "react";
 import style from './counterSettings.module.css'
 import {Button} from "../../button/button";
 
 
 type SettingsType={
-    minValue:number,
+    startValue:number,
     maxValue:number,
+    setStartValue:(e:number)=>void,
+    setMaxValue:(e:number)=>void,
+    setCount:(value:number)=>void,
+
 }
 export const CounterSettings=(props:SettingsType)=>{
 
-    let [minValue,setMinValue]=useState(0)
-    let [maxValue,setMaxValue]=useState(0)
+    let set=()=>{
+        props.setCount(props.startValue)
 
+
+    }
 
 
     return(
         <div className={style.body}>
-            <div className={style.buttonsGroup}>
-<input value={'max'} onChange={e=>setMaxValue(Number(e.currentTarget.value))}/>
+            <div className={style.buttonsGroup}>maxValue
+<input value={props.maxValue}
+
+       onChange={e=>props.setMaxValue(Number(e.currentTarget.value))}/>
             </div>
 
             <div className={style.buttonsGroup} >
-                <input value={'min'} onChange={e=>setMinValue(Number(e.currentTarget.value))}/>
+                minValue
+                <input value={props.startValue} onChange={e=>props.setStartValue(Number(e.currentTarget.value))}/>
             </div>
             <div className={style.buttons}>
-                <Button name={'Set num'} callBack={()=>{}}
+                <Button name={'Set num'} callBack={set}
                 />
 
             </div>
