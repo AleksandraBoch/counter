@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import {Button} from "../button/button";
 import style from "./counter.module.css"
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "./state";
+import {resetValue} from "../components/actions";
 
 
 type CounterType={
@@ -14,6 +17,8 @@ type CounterType={
 
 
 export const Counter = (props:CounterType) => {
+    const dispatch=useDispatch()
+    let values=useSelector<AppRootStateType>(state => state.values)  //вытаскиваем значения из store
     // let [num, setNum] = useState(0)
     // let [error, setError] = useState('Error!')
 
@@ -34,7 +39,7 @@ let errorStyle=`${props.num===props.maxValue  && style.error}`
     }
 
     const resetButton = () => {
-        return props.setNum(0)
+        dispatch(resetValue())
     }
 
     let disabledCount=props.num===props.maxValue
