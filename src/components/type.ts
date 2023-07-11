@@ -1,23 +1,26 @@
 export type counterUpType = {
     type: "COUNTUP",
-    payload: {}
+    // payload: {value:number}
 
 }
-export type counterDownType = {
-    type: "COUNTDOWN"
-    payload: {}
-}
-export type setMaxValue = {
+
+export type setMaxValueType = {
     type: "SET_MAX_VALUE"
-    payload: {}
+    payload: {value: number}
 }
-export type setMinValue = {
+export type setMinValueType = {
     type: "SET_MIN_VALUE"
     payload: {value: number}
 }
 
-export type ResetValue = {
-    type: 'RESET VALUE'
+export type ResetValueType = {
+    type: 'RESET_VALUE'
+    // payload: {value: number}
 }
 
-export type ActionsType = counterUpType | counterDownType | setMaxValue | setMinValue | ResetValue
+export type errorType={
+    type:"ERROR"
+    payload:{error:boolean}
+}
+
+export type ActionsType = counterUpType  | setMaxValueType | setMinValueType | ResetValueType |errorType

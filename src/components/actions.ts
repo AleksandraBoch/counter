@@ -1,29 +1,25 @@
-import {setMinValue} from "./type";
+import {counterUpType, errorType, ResetValueType, setMaxValueType, setMinValueType} from "./type";
 
+export const countUp = (): counterUpType => ({
+    type: "COUNTUP",
+    // payload: {value}
+})
 
-export const countUp = () => {
-    type:"COUNTUP"
+export const setMaxValue = (value:number):setMaxValueType => ({
+    type:"SET_MAX_VALUE",
+    payload:{value}
+})
+export const setMinValueAC = (value:number): setMinValueType => ({
+    type:"SET_MIN_VALUE",
+    payload:{value}
+})
 
-}
-export const countDown = () => {
-    type:"COUNTDOWN"
-    payload:{
-
-    }
-}
-export const setMaxValue = () => {
-    type:"SET_MAX_VALUE"
-    payload:{
-
-    }
-}
-export const setMinValueAC = (value:number):any => {
-    type:"SET_MIN_VALUE"
-    payload:{
-        value
-    }
-}
-export const resetValue = ():any => {
-    type:"RESET VALUE"
-
-}
+export const resetValue = (): ResetValueType => ({
+        type: "RESET_VALUE",
+        // payload:{value}
+    } as const
+)
+export const errorAC=(error:boolean):errorType=>({
+type:"ERROR",
+    payload:{error}
+})

@@ -1,7 +1,5 @@
 import {ActionsType} from "../components/type";
 
-
-
 export type StateType = {
     minCount: number,
     maxCount: number,
@@ -18,28 +16,39 @@ const initialState: StateType = {
 }
 
 
-export function counterReducer(state: StateType = initialState, action: ActionsType) {
+export function counterReducer(state: StateType = initialState, action: ActionsType): StateType {
     switch (action.type) {
         case "COUNTUP":
 
-            return {...state,
-
+            return {
+                ...state, currentValue: state.currentValue + 1
             }
 
-        case "COUNTDOWN":
-            return {}
         case "SET_MAX_VALUE":
-            return {}
+            return {
+                ...state,
+                maxCount: action.payload.value,
+                // currentValue: action.payload.value
+            }
         case "SET_MIN_VALUE":
             return {
                 ...state,
-                minCount:action.payload.value,
-                currentValue:action.payload.value
+                minCount: action.payload.value,
+                // currentValue: action.payload.value
             }
-        case "RESET VALUE":
+        case "ERROR":
+             {
+          if  (state.minCount>state.maxCount ||state.currentValue===state.maxCount){
+                return {...state,error:true}
+        }else {
+                return {...state,error:false}
+            }
+             }
+        case "RESET_VALUE":
+            console.log('hello')
             return {
-                ...state,error:false,
-                currentValue:state.minCount
+                ...state,
+                currentValue: state.minCount
             }
 
         default: {
